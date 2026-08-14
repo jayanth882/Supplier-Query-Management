@@ -86,9 +86,9 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-6">
               <div className="flex items-center gap-3 cursor-pointer group">
                 <div className="h-8 w-8 rounded-full bg-emerald/20 border border-emerald/30 flex items-center justify-center text-sm font-bold text-emerald group-hover:bg-emerald/30 transition-colors">
-                  SM
+                  DJ
                 </div>
-                <span className="text-sm font-medium text-cream group-hover:text-white transition-colors">Sarah M.</span>
+                <span className="text-sm font-medium text-cream group-hover:text-white transition-colors">Dasari Jayanth</span>
               </div>
             </div>
 
@@ -131,10 +131,10 @@ export default function Navbar() {
             <div className="flex items-center justify-between border-t border-border-medium pt-6 mt-auto">
               <div className="flex items-center space-x-4">
                 <div className="h-10 w-10 rounded-full bg-emerald/20 border border-emerald/30 flex items-center justify-center text-base font-bold text-emerald">
-                  SM
+                  DJ
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-base font-medium text-cream">Sarah Mitchell</span>
+                  <span className="text-base font-medium text-cream">Dasari Jayanth</span>
                   <span className="text-xs text-muted text-gray-400">QA Manager</span>
                 </div>
               </div>
