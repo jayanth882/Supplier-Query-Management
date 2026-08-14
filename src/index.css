@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-charcoal: #1a1a1a;
+  --color-charcoal-deep: #0f0f0f;
+  --color-charcoal-light: #2a2a2a;
+  --color-charcoal-lighter: #333333;
+  --color-off-white: #f5f2eb;
+  --color-cream: #faf8f4;
+  --color-cream-dark: #e8e4db;
+  --color-emerald: #2d8a6e;
+  --color-emerald-soft: #3ba886;
+  --color-emerald-glow: #2d8a6e33;
+  --color-lime-muted: #8bc34a;
+  --color-lime-subtle: #8bc34a22;
+  --color-amber-pending: #e8a838;
+  --color-amber-glow: #e8a83833;
+  --color-blue-progress: #4a90d9;
+  --color-blue-glow: #4a90d933;
+  --color-green-resolved: #38b865;
+  --color-green-glow: #38b86533;
+  --color-red-high: #e85454;
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+  --color-border-medium: rgba(255, 255, 255, 0.1);
+  --color-glass: rgba(26, 26, 26, 0.72);
+  --color-glass-light: rgba(26, 26, 26, 0.45);
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-body: 'DM Sans', 'Inter', sans-serif;
+}
+
+/* ===== Global Reset & Base ===== */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-charcoal-deep);
+  color: var(--color-off-white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+#root {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-charcoal-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-charcoal-lighter);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-emerald);
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: var(--color-emerald);
+  color: var(--color-off-white);
+}
+
+/* ===== Glass Utilities ===== */
+.glass {
+  background: var(--color-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.glass-light {
+  background: var(--color-glass-light);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.glass-card {
+  background: linear-gradient(
+    135deg,
+    rgba(42, 42, 42, 0.6) 0%,
+    rgba(26, 26, 26, 0.8) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 16px;
+}
+
+/* ===== Premium Gradients ===== */
+.gradient-emerald {
+  background: linear-gradient(135deg, var(--color-emerald) 0%, var(--color-emerald-soft) 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-off-white) 0%, var(--color-cream-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-emerald {
+  background: linear-gradient(135deg, var(--color-emerald) 0%, var(--color-emerald-soft) 50%, var(--color-lime-muted) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg-subtle {
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(45, 138, 110, 0.08) 0%,
+    transparent 60%
+  );
+}
+
+/* ===== Glow Effects ===== */
+.glow-emerald {
+  box-shadow: 0 0 20px var(--color-emerald-glow),
+              0 0 60px rgba(45, 138, 110, 0.1);
+}
+
+.glow-amber {
+  box-shadow: 0 0 20px var(--color-amber-glow);
+}
+
+.glow-blue {
+  box-shadow: 0 0 20px var(--color-blue-glow);
+}
+
+/* ===== Animated Pulse ===== */
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes draw-line {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ===== Typography Scale ===== */
+.text-display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.text-display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.text-display-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.text-section-label {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-emerald-soft);
+}
+
+.text-body-lg {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: rgba(245, 242, 235, 0.7);
+}
+
+.text-body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(245, 242, 235, 0.6);
+}
+
+/* ===== Custom Cursor ===== */
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-emerald-soft);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+}
+
+.custom-cursor.hovering {
+  width: 50px;
+  height: 50px;
+  border-color: var(--color-emerald);
+  background: rgba(45, 138, 110, 0.1);
+}
+
+.custom-cursor-dot {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  background-color: var(--color-emerald);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease;
+}
+
+/* ===== Noise Texture Overlay ===== */
+.noise-overlay::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ===== Focus Styles ===== */
+:focus-visible {
+  outline: 2px solid var(--color-emerald-soft);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .custom-cursor,
+  .custom-cursor-dot {
+    display: none;
+  }
+}
+
+/* ===== Responsive Helpers ===== */
+@media (max-width: 768px) {
+  .custom-cursor,
+  .custom-cursor-dot {
+    display: none;
+  }
+}
+
+/* ===== Loading screen ===== */
+.loading-progress-bar {
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-emerald), var(--color-emerald-soft), var(--color-lime-muted));
+  border-radius: 1px;
+  transition: width 0.3s ease;
+}
+
+/* ===== Canvas container ===== */
+.webgl-canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.webgl-canvas-container canvas {
+  pointer-events: auto;
+}
