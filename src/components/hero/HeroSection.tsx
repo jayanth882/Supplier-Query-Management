@@ -34,7 +34,6 @@ export const HeroSection: React.FC = () => {
   }, []);
 
   const headingText = "Supplier questions.\nHandled with clarity.";
-  const words = headingText.split(' ');
 
   const containerVariants = {
     hidden: { opacity: 0 },
